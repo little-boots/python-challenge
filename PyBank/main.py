@@ -1,10 +1,8 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import os
 import csv
 
 
-# NOTE: I didn't want two copies of this dataset and my (exfat) hard drive
-#       doesn't support symlinks?
 budget_path = os.path.join('..', '..', '..',
                            'UNCRAL20190514DATA',
                            '02-Homework',
@@ -56,8 +54,8 @@ print(f"Greatest Increase in Profits: {greatest_inc[0]}, (${greatest_inc[1]})")
 print(f"Greatest Decrease in Profits: {greatest_dec[0]}, (${greatest_dec[1]})")
 
 # Output results to text file
-
-output = open("analysis.txt", "w")
+# TODO: Why aren't the newlines showing up correctly?
+output = open("analysis.txt", "w", newline="")
 
 output.write("Financial Analysis")
 output.write("----------------------------")
