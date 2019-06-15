@@ -1,7 +1,5 @@
-#!/usr/bin/python3
 import os
 import csv
-
 
 budget_path = os.path.join('..', '..', '..',
                            'UNCRAL20190514DATA',
@@ -12,7 +10,6 @@ budget_path = os.path.join('..', '..', '..',
                            'Resources',
                            'budget_data.csv')
 
-# I'm assuming we're not supposed to use pandas on this one.  Instead...
 month_ct  = 0
 tru_total = 0
 greatest_inc = [None, 0]
@@ -43,27 +40,21 @@ with open(budget_path, newline='') as csvfile:
 
     avg_chg = tru_total / month_ct
 
-# Output results to STDOUT
-print("Financial Analysis")
-print("----------------------------")
-print(f"Total Months: {month_ct}")
-print(f"Total: ${tru_total}")
-print(f"Average Change: {avg_chg}")
-print(f"Average Change: {round((last - first) / (month_ct - 1), 2)}")
-print(f"Greatest Increase in Profits: {greatest_inc[0]}, (${greatest_inc[1]})")
-print(f"Greatest Decrease in Profits: {greatest_dec[0]}, (${greatest_dec[1]})")
-
 # Output results to text file
-# TODO: Why aren't the newlines showing up correctly?
-output = open("analysis.txt", "w", newline="")
+output = open("analysis.txt", "w")
 
-output.write("Financial Analysis")
-output.write("----------------------------")
-output.write(f"Total Months: {month_ct}")
-output.write(f"Total: ${tru_total}")
-output.write(f"Average Change: {avg_chg}")
-output.write(f"Average Change: {round((last - first) / (month_ct - 1), 2)}")
-output.write(f"Greatest Increase in Profits: {greatest_inc[0]}, (${greatest_inc[1]})")
-output.write(f"Greatest Decrease in Profits: {greatest_dec[0]}, (${greatest_dec[1]})")
+output.write("Financial Analysis\n")
+output.write("----------------------------\n")
+output.write(f"Total Months: {month_ct}\n")
+output.write(f"Total: ${tru_total}\n")
+output.write(f"Average Change: {avg_chg}\n")
+output.write(f"Average Change: {round((last - first) / (month_ct - 1), 2)}\n")
+output.write(f"Greatest Increase in Profits: {greatest_inc[0]}, (${greatest_inc[1]})\n")
+output.write(f"Greatest Decrease in Profits: {greatest_dec[0]}, (${greatest_dec[1]})\n")
 
 output.close()
+
+# Send file to STDOUT
+readfile = open("analysis.txt", "r")
+for line in readfile:
+    print(line)

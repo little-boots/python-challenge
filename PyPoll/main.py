@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 import os
 import csv
 
@@ -35,19 +34,18 @@ winner     = [candidate for candidate in vote_summary.keys() if\
 
 # Create output file
 output = open("tally.txt", "w", newline="")
-output.write("Election Results")
-output.write("----------------------------")
-output.write(f"Total Votes: {vote_total}")
-output.write("----------------------------")
+output.write("Election Results\n")
+output.write("----------------------------\n")
+output.write(f"Total Votes: {vote_total}\n")
+output.write("----------------------------\n")
 for candidate, votes in vote_summary.items():
     pct = str(round((100 * votes / vote_total), 3))
-    output.write(f"{candidate}: {pct}% ({votes})")
-output.write(f"Winner: {winner}") #(chicken dinner)
+    output.write(f"{candidate}: {pct}% ({votes})\n")
+output.write("----------------------------\n")
+output.write(f"Winner: {winner}\n") #(chicken dinner)
 output.close()
-
 
 # Send file to STDOUT
 readfile = open("tally.txt", "r")
 for line in readfile:
     print(line)
-
